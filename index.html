@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Geolocalizaci&oacute;n</title>
+        <meta HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1" />
+        <link rel="stylesheet" href="JQ/jquery.mobile-1.4.2.min.css" />
+		    <script src="JQ/jquery-2.1.1.min.js"></script>
+		    <script src="JQ/jquery.mobile-1.4.2.js"></script>
+        <link rel="stylesheet" href="CSS/index.css" />
+        <link rel="stylesheet" href="JQ/pape.css" />
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "http://facturas.ajdla.com/estado.php",
+                //url: "http://localhost:8080/phgap/pape/php/estado.php",
+                data: "inputdata=",
+                dataType:'jsonp',
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                  $("#btn").html('Verifica tu conexción a internet');
+                },
+                success:function(response){
+                  $("#btn").html(response.e);
+                }
+            });
+        });
+    </script>
+
+    </head>
+
+    <body>
+    
+   	    <div data-role="page" id="paginaMapa" data-url="map-page">
+        	  <div data-role="header">
+            	<h1>Papeleria y Reagolos Rosita</h1>
+              <h4>Villa Bonita</h4>
+            </div>
+
+                <h1 align="center">Estamos abriertos</h1>
+
+               <button type="button" id="btn" class="ui-btn-a"></button>
+
+              <a href="http://facturas.ajdla.com/abrir.php"> 
+               <button type="button" id="btn-a" class="ui-btn">Abrir</button>
+              </a>
+              <a href="http://facturas.ajdla.com/cerrar.php"> 
+               <button type="button" id="btn-c" class="ui-btn">Cerrar</button>
+              </a>
+
+            <div class="posicionBoton">
+              <a href="tel:6623248965">
+                <img src='CSS/BOTON/call.png'>
+              </a>
+            </div>
+            <div class="posicionBotonR">
+              <a href="http://www.papeleriarosita.com/vb">
+                <h3>Papeleriarosita.com</h3>
+              </a>
+              <a href="mailto:vb@papeleriarosita.com" target="_top">
+                vb@papeleriarosita.com
+              </a>
+            </div>
+        </div>
+    </body>
+</html>
